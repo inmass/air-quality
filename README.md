@@ -22,4 +22,4 @@ $ npm run start:prod
 ```
 ## Link to test integration
 
-http://127.0.0.1:3000/air-quality?latitude=<YOUR_LATITUDE>&longitude=<YOUR_LONGITUDE>
+http://127.0.0.1:3000/air-quality?latitude=YOUR_LATITUDE&longitude=YOUR_LONGITUDE
