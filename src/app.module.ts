@@ -23,6 +23,7 @@ import { Info } from './entities/info.entity';
       ],
       synchronize: true,
     }),
+    TypeOrmModule.forFeature([Info])
   ],
   controllers: [AppController],
   providers: [AppService, ScheduledTasksService],
