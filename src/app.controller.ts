@@ -14,4 +14,9 @@ export class AppController {
   getAirQuality(@Query('latitude') latitude: number, @Query('longitude') longitude: number) {
     return this.appService.getAirQuality(latitude, longitude); // send parameters to service
   }
+  
+  @Get('/paris-most-polluted')
+  getParisMostPolluted() {
+    return this.appService.getParisMostPolluted();
+  }
 }

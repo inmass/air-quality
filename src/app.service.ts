@@ -9,7 +9,8 @@ import { Info } from './entities/info.entity';
 @Injectable()
 export class AppService {
   constructor(
-    private readonly httpService: HttpService
+    private readonly httpService: HttpService,
+    @InjectRepository(Info) private readonly infoRepository: Repository<Info>
   ) { }
 
   getHello(): string {
@@ -29,5 +30,27 @@ export class AppService {
       }
       ));
     return response;
+  }
+
+  getParisMostPolluted() {
+    // get the max aqius, maincn from the database
+
+    let info = this.infoRepository.find(
+      {
+        order: {
+          aqius: 'DESC',
+          maincn: 'DESC'
+        }
+      }
+    );
+    // get the first element of the promise
+    return info.then(info => {
+      let dateTime = info[0].dateTime;
+      let date = new Date(dateTime);
+      let dateString = date.toLocaleDateString();
+      let timeString = date.toLocaleTimeString();
+      let dateTimeString = `${dateString} ${timeString}`;
+      return dateTimeString;
+    });
   }
 }
